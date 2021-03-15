@@ -4,7 +4,12 @@ function draw() {
     const ctx = canvas.getContext("2d");
 
     // draw sky & clounds
-
+    function drawSky(colour){
+      ctx.beginPath();
+      ctx.fillStyle = colour;
+      ctx.fillRect(0,canvas.height - 540,canvas.width,canvas.height - 200);
+    }
+    drawSky('#e0f2fc');
     // draw birds
 
     // draw grass
