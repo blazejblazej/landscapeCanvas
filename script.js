@@ -45,13 +45,13 @@ function draw() {
     function drawRainbow(colour,radius){
       //reference https://stackoverflow.com/questions/37700784/drawing-a-rainbow-with-canvas-and-javascript
         ctx.beginPath();
-        ctx.arc(canvas.width/2,340,radius,Math.PI,2*Math.PI); //create arch 
+        ctx.arc(canvas.width/2,340,radius,Math.PI,2*Math.PI); //create arch in the centre of canvas, draw it on top of grass, and make it half of a circle
         ctx.lineWidth = 20; //set width of every bar
         ctx.strokeStyle = colour; //set colour of bar
         ctx.stroke();
         
     }
-    //draw bars, every smaller arch's radius is smaller by lineWidth because    
+    //draw bars, every smaller arch's radius is smaller by lineWidth    
     drawRainbow("#bdb2ff",130);
     drawRainbow("#9bf6ff",110);
     drawRainbow("#fdffb6",90);
