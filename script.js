@@ -4,10 +4,10 @@ function draw() {
     const ctx = canvas.getContext("2d");
 
     // draw sky
-    function drawSky(colour){
+    function drawSky(colour) {
       ctx.beginPath();
       ctx.fillStyle = colour; //set colour to provided hex
-      ctx.fillRect(0,canvas.height - 540,canvas.width,canvas.height - 200); //fill rectangle with colour leave 200px at the bottom for grass
+      ctx.fillRect(0, canvas.height - 540, canvas.width, canvas.height - 200); //fill rectangle with colour leave 200px at the bottom for grass
     }
     drawSky('#e0f2fc');
     // draw clouds
@@ -25,24 +25,37 @@ function draw() {
       ctx.fill();
       ctx.closePath();
     }
-    drawCloud(140,150);
-    drawCloud(650,90);
+    drawCloud(140, 150);
+    drawCloud(650, 90);
     // draw birds
-    function drawBird(posX,posY,wingWidth){
+    function drawBird(posX, posY, wingWidth) {
       ctx.beginPath();
-      ctx.moveTo(posX,posY); //go to selected X,Y
-      ctx.lineTo(posX-wingWidth,posY-wingWidth); //left wing, move to x - wing width and go up by wing width
-      ctx.moveTo(posX,posY); //go back to the middle
-      ctx.lineTo(posX+wingWidth,posY-wingWidth) //right wing
+      ctx.moveTo(posX, posY); //go to selected X,Y
+      ctx.lineTo(posX - wingWidth, posY - wingWidth); //left wing, move to x - wing width and go up by wing width
+      ctx.moveTo(posX, posY); //go back to the middle
+      ctx.lineTo(posX + wingWidth, posY - wingWidth) //right wing
       ctx.stroke();
     }
-    drawBird(40,40,15);
-    drawBird(700,200,25);
-    drawBird(200,150,17);
+    drawBird(40, 40, 15);
+    drawBird(700, 200, 25);
+    drawBird(200, 150, 17);
     // draw grass
 
     // draw rainbow
-
+    function drawRainbow(colour,radius){
+      //reference https://stackoverflow.com/questions/37700784/drawing-a-rainbow-with-canvas-and-javascript
+        ctx.beginPath();
+        ctx.arc(canvas.width/2,340,radius,Math.PI,2*Math.PI); //create arch 
+        ctx.lineWidth = 20; //set width of every bar
+        ctx.strokeStyle = colour; //set colour of bar
+        ctx.stroke();
+        
+    }
+    //draw bars, every smaller arch's radius is smaller by lineWidth because    
+    drawRainbow("#bdb2ff",130);
+    drawRainbow("#9bf6ff",110);
+    drawRainbow("#fdffb6",90);
+    drawRainbow("#ffadad",70);
     // draw trees
 
     // draw flowers
