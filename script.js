@@ -3,13 +3,30 @@ function draw() {
   if (canvas.getContext) {
     const ctx = canvas.getContext("2d");
 
-    // draw sky & clounds
+    // draw sky
     function drawSky(colour){
       ctx.beginPath();
       ctx.fillStyle = colour; //set colour to provided hex
       ctx.fillRect(0,canvas.height - 540,canvas.width,canvas.height - 200); //fill rectangle with colour leave 200px at the bottom for grass
     }
-    drawSky('#e0f2fc'); //draw sky
+    drawSky('#e0f2fc');
+    // draw clouds
+
+    function drawCloud(posX, posY) {
+      //reference https://stackoverflow.com/questions/19541192/how-to-draw-cloud-shape-in-html5-canvas
+      ctx.beginPath();
+      ctx.arc(posX, posY, 20, Math.PI * 0.5, Math.PI * 1.5); //half of circle arc is left side of cloud
+      ctx.arc(posX + 120, posY, 20, Math.PI * 1.5, Math.PI * 0.5); //right side of half circle arc            
+      ctx.moveTo(posX + 120, posY + 20);
+      ctx.lineTo(posX, posY + 20); //connect left and right bottom arc
+      ctx.arc(posX + 30, posY - 20, 30, Math.PI * 1, Math.PI * 1.85); // left top arc
+      ctx.arc(posX + 85, posY - 20, 30, Math.PI * 1, Math.PI * 2); //top right arc
+      ctx.fillStyle = "white";
+      ctx.fill();
+      ctx.closePath();
+    }
+    drawCloud(140,150);
+    drawCloud(650,90);
     // draw birds
     function drawBird(posX,posY,wingWidth){
       ctx.beginPath();
